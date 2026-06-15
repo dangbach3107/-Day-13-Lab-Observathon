@@ -2,7 +2,7 @@
   "provider": "openai",
   "model": "gpt-5.4-mini",
   "model_price_tier": "budget",
-  "max_steps": 8,
+  "max_steps": 15,
   "loop_guard": true,
   "temperature": 0.0,
   "context_size": 3,
@@ -20,12 +20,12 @@
   "normalize_unicode": true,
   "redact_pii": true,
   "session_drift_rate": 0.0,
-  "context_reset_every": 4,
+  "context_reset_every": 15,
   "tool_error_rate": 0.0,
   "catalog_override": {},
   "route_rules": [],
   "planner": false,
   "verify": false,
   "self_consistency": 1,
-  "tool_budget": 4
+  "tool_budget": 10
 }

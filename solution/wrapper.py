@@ -106,12 +106,16 @@ def _redact_answer(answer):
     """Redact PII from answer, using telemetry.redact or fallback regex."""
     if not answer:
         return answer, 0
+    # 1. Redact FIRST to get the count
     cleaned, count = redact(answer)
     # Fallback: also catch with simple regex if telemetry missed anything
     if not _HAS_TELEMETRY:
         cleaned, n1 = _EMAIL_RE.subn('[REDACTED:EMAIL]', cleaned)
         cleaned, n2 = _PHONE_RE.subn('[REDACTED:PHONE]', cleaned)
         count += n1 + n2
+
+    # 2. Strip trailing commentary
+    cleaned = re.sub(r'(?i)\s*\(lien he:.*?\)', '', cleaned)
     return cleaned, count
 
 
@@ -200,8 +204,7 @@ def mitigate(call_next, question, config, context):
     # ── 5. POST-PROCESS: REDACT PII FROM ANSWER ─────────────────────────
     answer = result.get("answer") or ""
     cleaned_answer, pii_count = _redact_answer(answer)
-    if pii_count > 0:
-        result["answer"] = cleaned_answer
+    result["answer"] = cleaned_answer
 
     # ── 6. STORE IN CACHE (thread-safe) ──────────────────────────────────
     if cache is not None and ck is not None and result.get("status") == "ok":

@@ -1,0 +1,21 @@
+{
+  "team": "Bach",
+  "phase": "private",
+  "headline": 88.83,
+  "sub": {
+    "correct": 0.5275,
+    "quality": 0.7074,
+    "error": 1.0,
+    "latency": 0.6857,
+    "cost": 0.2775,
+    "drift": 0.9607,
+    "prompt": 0.7285
+  },
+  "diag_f1": 1.0,
+  "n": 80,
+  "n_correct": 38,
+  "judge_mode": "offline",
+  "weights_hash": "e81a8ed58d93",
+  "key_hash": "7e3905b75db0",
+  "sig": "be3340e3ab38c0fd60191727d121763784632e7606ffa865105a8256571019bf"
+}
