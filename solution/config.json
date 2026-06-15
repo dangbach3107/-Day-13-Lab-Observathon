@@ -1,6 +1,6 @@
 {
   "provider": "openai",
-  "model": "gpt-4o-mini",
+  "model": "gpt-5.4-mini",
   "model_price_tier": "budget",
   "max_steps": 8,
   "loop_guard": true,
